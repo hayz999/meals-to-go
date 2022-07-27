@@ -60,6 +60,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.bg.primary,
+    marginBottom: space.lg,
   },
   cover: {
     padding: space.lg,

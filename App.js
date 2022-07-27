@@ -6,16 +6,14 @@ import {
   Platform,
   StatusBar,
   View,
-  ScrollView,
 } from "react-native";
-import { RestaurantsScreen } from "./src/features/restaurants/screens/restaurants.screen";
-import { SearchBar } from "./src/components/SearchBar";
-import { space } from "./src/utils/spacing";
 import {
   useFonts as useOswald,
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
+import { NavigationContainer } from "@react-navigation/native";
+import { Navigation } from "./src/components/Navigation";
 
 const isAndroid = Platform.OS === "android";
 
@@ -33,18 +31,12 @@ export default function App() {
   }
 
   return (
-    <>
+    <NavigationContainer>
       <SafeAreaView style={styles.container}>
-        <View style={styles.search}>
-          <SearchBar />
-        </View>
-
-        <ScrollView>
-          <RestaurantsScreen />
-        </ScrollView>
+        <Navigation />
       </SafeAreaView>
       <ExpoStatusBar style="auto" />
-    </>
+    </NavigationContainer>
   );
 }
 
@@ -52,8 +44,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: isAndroid ? StatusBar.currentHeight : 0,
-  },
-  search: {
-    padding: space.lg,
   },
 });
