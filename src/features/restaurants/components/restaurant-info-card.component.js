@@ -11,18 +11,17 @@ import open from "../../../../assets/open";
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {
-    name = "Some Restaurant",
-    icon = "https://cdn-icons-png.flaticon.com/512/5141/5141534.png",
-    photos = [
-      "https://media-cdn.tripadvisor.com/media/photo-s/11/70/b8/a9/corinne-restaurant-open.jpg",
-    ],
-    address = "500 Street Way",
-    isOpenNow = true,
-    rating = 2,
-    isClosedTemporarily = true,
+    name,
+    icon,
+    photos,
+    vicinity,
+    isOpenNow,
+    rating,
+    isClosedTemporarily,
+    placeId,
   } = restaurant;
 
-  const ratingArray = Array.from(new Array(Math.floor(rating)));
+  const ratingArray = rating ? Array.from(new Array(Math.floor(rating))) : [];
 
   return (
     <Card elevation={5} style={styles.card}>
@@ -32,8 +31,8 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
       <Card.Content>
         <View style={styles.icons}>
           <View style={styles.stars}>
-            {ratingArray.map(() => (
-              <SvgXml xml={star} />
+            {ratingArray.map((_, index) => (
+              <SvgXml xml={star} key={`star-${placeId}-${index}`} />
             ))}
           </View>
 
@@ -51,7 +50,7 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
           </View>
         </View>
 
-        <Paragraph style={styles.address}>{address}</Paragraph>
+        <Paragraph style={styles.address}>{vicinity}</Paragraph>
       </Card.Content>
     </Card>
   );
@@ -78,12 +77,13 @@ const styles = StyleSheet.create({
   },
   infoSection: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
     flex: 0.6,
   },
   mediumIcon: {
     width: sizes.md,
     height: sizes.md,
+    marginLeft: space.md,
   },
   title: {
     fontFamily: fonts.heading,
@@ -96,5 +96,6 @@ const styles = StyleSheet.create({
     color: colors.text.error,
     fontWeight: "bold",
     fontFamily: fonts.body,
+    marginLeft: space.md,
   },
 });

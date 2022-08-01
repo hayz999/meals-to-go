@@ -1,18 +1,35 @@
-import React from "react";
-import { StyleSheet, FlatList, View } from "react-native";
+import React, { useContext } from "react";
+import { StyleSheet, FlatList, Text } from "react-native";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { space } from "../../../utils/spacing";
-import { SearchBar } from "../../../components/SearchBar";
+import { colors } from "../../../utils/colors";
+import { fonts, fontSizes } from "../../../utils/fonts";
+import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
+import { ActivityIndicator } from "react-native-paper";
+import { Search } from "../components/search.component";
 
 export const RestaurantsScreen = () => {
+  const { restaurants, error, isLoading } = useContext(RestaurantsContext);
+
   return (
     <>
-      <View style={styles.search}>
-        <SearchBar />
-      </View>
+      <Search />
+      {isLoading && (
+        <ActivityIndicator
+          animating={true}
+          color={colors.brand.primary}
+          style={{ top: "30%" }}
+          size="large"
+        />
+      )}
+
+      {error && <Text style={styles.error}>No restaurants found.</Text>}
+
       <FlatList
-        data={[{ name: 1 }, { name: 2 }, { name: 3 }, { name: 4 }, { name: 5 }]}
-        renderItem={() => <RestaurantInfoCard />}
+        data={restaurants}
+        renderItem={({ item }) => {
+          return <RestaurantInfoCard restaurant={item} />;
+        }}
         keyExtractor={(item) => item.name}
         contentContainerStyle={styles.card}
       />
@@ -24,7 +41,10 @@ const styles = StyleSheet.create({
   card: {
     padding: space.lg,
   },
-  search: {
-    padding: space.lg,
+  error: {
+    fontSize: fontSizes.h5,
+    fontFamily: fonts.body,
+    textAlign: "center",
+    // paddingLeft: space.lg,
   },
 });
