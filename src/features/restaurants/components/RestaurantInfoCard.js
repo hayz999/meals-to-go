@@ -8,7 +8,7 @@ import { sizes } from "../../../utils/sizes";
 import { SvgXml } from "react-native-svg";
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
-import { Favorite } from "../../../components/Favorite";
+import { Favorite } from "../../../components/favorites/Favorite";
 
 export const RestaurantInfoCard = ({ restaurant = {} }) => {
   const {

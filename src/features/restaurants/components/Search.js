@@ -4,7 +4,7 @@ import { View, StyleSheet } from "react-native";
 import { space } from "../../../utils/spacing";
 import { LocationContext } from "../../../services/location/location.context";
 
-export const Search = () => {
+export const Search = ({ isFavoritesToggled, onFavoritesToggled }) => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
@@ -15,6 +15,8 @@ export const Search = () => {
   return (
     <View style={styles.search}>
       <Searchbar
+        icon={isFavoritesToggled ? "heart" : "heart-outline"}
+        onIconPress={onFavoritesToggled}
         placeholder="Search for a location"
         clearAccessibilityLabel="Clear search field"
         searchAccessibilityLabel="Search for a city"

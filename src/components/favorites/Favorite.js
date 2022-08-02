@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { FavoritesContext } from "../services/favorites/favorites.context";
+import { FavoritesContext } from "../../services/favorites/favorites.context";
 import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity, StyleSheet } from "react-native";
-import { space } from "../utils/spacing";
+import { space } from "../../utils/spacing";
 
 export const Favorite = ({ restaurant }) => {
   const { favorites, addToFavorites, removeFromFavorites } =
