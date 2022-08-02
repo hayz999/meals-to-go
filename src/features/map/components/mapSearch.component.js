@@ -4,7 +4,7 @@ import { View, StyleSheet } from "react-native";
 import { space } from "../../../utils/spacing";
 import { LocationContext } from "../../../services/location/location.context";
 
-export const Search = () => {
+export const MapSearch = () => {
   const { keyword, search } = useContext(LocationContext);
   const [searchKeyword, setSearchKeyword] = useState(keyword);
 
@@ -16,6 +16,7 @@ export const Search = () => {
     <View style={styles.search}>
       <Searchbar
         placeholder="Search for a location"
+        icon="map"
         value={searchKeyword}
         onSubmitEditing={() => {
           search(searchKeyword);
@@ -31,5 +32,8 @@ export const Search = () => {
 const styles = StyleSheet.create({
   search: {
     padding: space.lg,
+    position: "absolute",
+    zIndex: 999,
+    width: "100%",
   },
 });
