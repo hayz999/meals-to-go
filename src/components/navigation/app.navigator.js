@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { RestaurantsNavigator } from "./restaurants.navigator";
-import { MapScreen } from "../../features/map/screens/map.screen";
+import { MapScreen } from "../../features/map/screens/MapScreen";
 
 const Settings = () => {
   return (

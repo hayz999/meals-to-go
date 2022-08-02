@@ -1,5 +1,5 @@
 import React from "react";
-import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
+import { RestaurantInfoCard } from "../components/RestaurantInfoCard";
 import { List } from "react-native-paper";
 import { ScrollView } from "react-native";
 

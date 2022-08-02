@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { StyleSheet, FlatList, Text, TouchableOpacity } from "react-native";
-import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
+import { RestaurantInfoCard } from "../components/RestaurantInfoCard";
 import { space } from "../../../utils/spacing";
 import { colors } from "../../../utils/colors";
 import { fonts, fontSizes } from "../../../utils/fonts";
 import { RestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { ActivityIndicator } from "react-native-paper";
-import { Search } from "../components/search.component";
+import { Search } from "../components/Search";
 
 export const RestaurantsScreen = ({ navigation }) => {
   const { restaurants, error, isLoading } = useContext(RestaurantsContext);
@@ -31,7 +31,7 @@ export const RestaurantsScreen = ({ navigation }) => {
           return (
             <TouchableOpacity
               onPress={() =>
-                navigation.navigate("Restaurant Detail", { restaurant: item })
+                navigation.navigate("RestaurantDetail", { restaurant: item })
               }
             >
               <RestaurantInfoCard restaurant={item} />

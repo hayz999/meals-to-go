@@ -1,7 +1,7 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { RestaurantsScreen } from "../../features/restaurants/screens/restaurants.screen";
-import { RestaurantDetailScreen } from "../../features/restaurants/screens/restaurant-detail.screen";
+import { RestaurantsScreen } from "../../features/restaurants/screens/RestaurantsScreen";
+import { RestaurantDetailScreen } from "../../features/restaurants/screens/RestaurantDetailScreen";
 
 export const RestaurantsNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -16,7 +16,7 @@ export const RestaurantsNavigator = () => {
       />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen
-          name="Restaurant Detail"
+          name="RestaurantDetail"
           component={RestaurantDetailScreen}
           options={options}
         />
