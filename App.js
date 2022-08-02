@@ -14,6 +14,7 @@ import {
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
+import { FavoritesContextProvider } from "./src/services/favorites/favorites.context";
 import { AppNavigator } from "./src/components/navigation/app.navigator";
 
 const isAndroid = Platform.OS === "android";
@@ -32,14 +33,16 @@ export default function App() {
   }
 
   return (
-    <LocationContextProvider>
-      <RestaurantsContextProvider>
-        <SafeAreaView style={styles.container}>
-          <AppNavigator />
-        </SafeAreaView>
-        <ExpoStatusBar style="auto" />
-      </RestaurantsContextProvider>
-    </LocationContextProvider>
+    <FavoritesContextProvider>
+      <LocationContextProvider>
+        <RestaurantsContextProvider>
+          <SafeAreaView style={styles.container}>
+            <AppNavigator />
+          </SafeAreaView>
+          <ExpoStatusBar style="auto" />
+        </RestaurantsContextProvider>
+      </LocationContextProvider>
+    </FavoritesContextProvider>
   );
 }
 
