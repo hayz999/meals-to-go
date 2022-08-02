@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { StyleSheet, FlatList, Text } from "react-native";
+import { StyleSheet, FlatList, Text, TouchableOpacity } from "react-native";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import { space } from "../../../utils/spacing";
 import { colors } from "../../../utils/colors";
@@ -8,7 +8,7 @@ import { RestaurantsContext } from "../../../services/restaurants/restaurants.co
 import { ActivityIndicator } from "react-native-paper";
 import { Search } from "../components/search.component";
 
-export const RestaurantsScreen = () => {
+export const RestaurantsScreen = ({ navigation }) => {
   const { restaurants, error, isLoading } = useContext(RestaurantsContext);
 
   return (
@@ -28,7 +28,15 @@ export const RestaurantsScreen = () => {
       <FlatList
         data={restaurants}
         renderItem={({ item }) => {
-          return <RestaurantInfoCard restaurant={item} />;
+          return (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate("Restaurant Detail", { restaurant: item })
+              }
+            >
+              <RestaurantInfoCard restaurant={item} />
+            </TouchableOpacity>
+          );
         }}
         keyExtractor={(item) => item.name}
         contentContainerStyle={styles.card}
@@ -45,6 +53,5 @@ const styles = StyleSheet.create({
     fontSize: fontSizes.h5,
     fontFamily: fonts.body,
     textAlign: "center",
-    // paddingLeft: space.lg,
   },
 });

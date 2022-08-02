@@ -12,10 +12,9 @@ import {
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
-import { NavigationContainer } from "@react-navigation/native";
-import { Navigation } from "./src/components/Navigation";
 import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
 import { LocationContextProvider } from "./src/services/location/location.context";
+import { AppNavigator } from "./src/components/navigation/app.navigator";
 
 const isAndroid = Platform.OS === "android";
 
@@ -35,12 +34,10 @@ export default function App() {
   return (
     <LocationContextProvider>
       <RestaurantsContextProvider>
-        <NavigationContainer>
-          <SafeAreaView style={styles.container}>
-            <Navigation />
-          </SafeAreaView>
-          <ExpoStatusBar style="auto" />
-        </NavigationContainer>
+        <SafeAreaView style={styles.container}>
+          <AppNavigator />
+        </SafeAreaView>
+        <ExpoStatusBar style="auto" />
       </RestaurantsContextProvider>
     </LocationContextProvider>
   );

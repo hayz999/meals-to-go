@@ -1,8 +1,9 @@
 import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { RestaurantsScreen } from "../features/restaurants/screens/restaurants.screen";
 import { Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { RestaurantsNavigator } from "./restaurants.navigator";
 
 const Settings = () => {
   return (
@@ -37,14 +38,22 @@ const createScreenOptions = ({ route }) => {
   };
 };
 
-export const Navigation = () => {
+const TabNavigation = () => {
   const Tab = createBottomTabNavigator();
 
   return (
     <Tab.Navigator screenOptions={createScreenOptions}>
-      <Tab.Screen name="Restaurants" component={RestaurantsScreen} />
+      <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
       <Tab.Screen name="Map" component={Map} />
       <Tab.Screen name="Settings" component={Settings} />
     </Tab.Navigator>
+  );
+};
+
+export const AppNavigator = () => {
+  return (
+    <NavigationContainer>
+      <TabNavigation />
+    </NavigationContainer>
   );
 };
