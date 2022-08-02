@@ -10,6 +10,3 @@ This application currently is using static JSON data to render a list of restaur
 - Navigation: `@react-navigation/native` 
 - Maps: `react-native-maps`
 
-## Screenshots
-![List View](assets/screenshots/list.png)
-![Restaurant Details](assets/screenshots/details.png)
