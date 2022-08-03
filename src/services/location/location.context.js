@@ -15,10 +15,13 @@ export const LocationContextProvider = ({ children }) => {
     setKeyword(searchKeyword);
   };
 
+  // on render or change, grab location for either the default location,
+  // or location entered in the search field
   useEffect(() => {
     if (!keyword.length) {
       return;
     }
+    // calls the location.service.js
     locationRequest(keyword.toLowerCase())
       .then(locationTransform)
       .then((result) => {

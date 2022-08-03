@@ -2,6 +2,7 @@ import { mocks, mockImages } from "./mocks";
 import camelize from "camelize";
 
 export const restaurantsRequest = (location) => {
+  // pulls mock restaurant data based on a passed location string
   return new Promise((resolve, reject) => {
     const mock = mocks[location];
     if (!mock) {
@@ -11,6 +12,7 @@ export const restaurantsRequest = (location) => {
   });
 };
 
+// maps through and transforms data in the way we want to ingest it in our components
 export const restaurantsTransform = ({ results = [] }) => {
   const mappedResults = results.map((restaurant) => {
     restaurant.photos = restaurant.photos.map((p) => {

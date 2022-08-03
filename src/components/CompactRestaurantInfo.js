@@ -13,7 +13,7 @@ export const CompactRestaurantInfo = ({ restaurant }) => {
       ) : (
         <Image source={{ uri: restaurant.photos[0] }} style={styles.image} />
       )}
-      <Text style={styles.name} center numberOfLines={3}>
+      <Text style={styles.name} numberOfLines={1}>
         {restaurant.name}
       </Text>
     </>
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   name: {
     fontFamily: fonts.body,
     fontSize: fontSizes.caption,
+    width: 100,
   },
   image: {
     borderRadius: 10,

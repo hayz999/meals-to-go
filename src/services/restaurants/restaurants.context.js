@@ -25,7 +25,9 @@ export const RestaurantsContextProvider = ({ children }) => {
     setIsLoading(true);
     setRestaurants([]);
 
+    // using a timeout here to allow data to load
     setTimeout(() => {
+      // this calls the restaurants.service.js
       restaurantsRequest(loc)
         .then(restaurantsTransform)
         .then((results) => {
@@ -38,6 +40,9 @@ export const RestaurantsContextProvider = ({ children }) => {
         });
     }, 2000);
   };
+
+  // track if location is updated in the state of the location context,
+  // and fetches restaurant data for the new location
   useEffect(() => {
     if (location) {
       const locationString = `${location.lat},${location.lng}`;

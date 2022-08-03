@@ -17,7 +17,7 @@ export const MapCallout = ({ restaurant, navigation }) => {
 
 const styles = StyleSheet.create({
   details: {
-    padding: space.lg,
+    padding: space.md,
     maxWidth: 120,
     alignItems: "center",
   },
