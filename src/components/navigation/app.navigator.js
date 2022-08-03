@@ -44,9 +44,5 @@ const TabNavigation = () => {
 };
 
 export const AppNavigator = () => {
-  return (
-    <NavigationContainer>
-      <TabNavigation />
-    </NavigationContainer>
-  );
+  return <TabNavigation />;
 };

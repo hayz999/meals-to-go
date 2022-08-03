@@ -9,4 +9,5 @@ This application currently is using static JSON data to render a list of restaur
 - Components: `react-native-paper`.  
 - Navigation: `@react-navigation/native` 
 - Maps: `react-native-maps`
+- Authentication `firebase`
 
