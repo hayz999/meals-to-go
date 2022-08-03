@@ -16,6 +16,10 @@ import { RestaurantsContextProvider } from "./src/services/restaurants/restauran
 import { LocationContextProvider } from "./src/services/location/location.context";
 import { FavoritesContextProvider } from "./src/services/favorites/favorites.context";
 import { AppNavigator } from "./src/components/navigation/app.navigator";
+import * as firebase from "firebase/app";
+import { firebaseConfig } from "./config/firebase.config";
+
+firebase.initializeApp(firebaseConfig);
 
 const isAndroid = Platform.OS === "android";
 

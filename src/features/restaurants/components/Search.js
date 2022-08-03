@@ -19,7 +19,7 @@ export const Search = ({ isFavoritesToggled, onFavoritesToggled }) => {
         onIconPress={onFavoritesToggled}
         placeholder="Search for a location"
         clearAccessibilityLabel="Clear search field"
-        searchAccessibilityLabel="Search for a city"
+        searchAccessibilityLabel="Toggle favorites"
         value={searchKeyword}
         onSubmitEditing={() => {
           search(searchKeyword);

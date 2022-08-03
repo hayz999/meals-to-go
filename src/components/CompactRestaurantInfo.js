@@ -5,10 +5,10 @@ import { fonts, fontSizes } from "../utils/fonts";
 
 const isAndroid = Platform.OS === "android";
 
-export const CompactRestaurantInfo = ({ restaurant }) => {
+export const CompactRestaurantInfo = ({ restaurant, isMap }) => {
   return (
     <>
-      {isAndroid ? (
+      {isAndroid && isMap ? (
         <WebView source={{ uri: restaurant.photos[0] }} style={styles.image} />
       ) : (
         <Image source={{ uri: restaurant.photos[0] }} style={styles.image} />
