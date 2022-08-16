@@ -1,22 +1,21 @@
 import React, { useContext, useState } from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { AuthBackground } from "../../../components/AuthBackground";
-import { Title } from "../../../components/Title";
-import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import {
   Button,
   TextInput,
   ActivityIndicator,
   Colors,
 } from "react-native-paper";
-import { colors } from "../../../utils/colors";
 import { space } from "../../../utils/spacing";
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { colors } from "../../../utils/colors";
+import { Title } from "../../../components/Title";
 
-export const RegisterScreen = ({ navigation }) => {
+export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
-  const [repeatedPassword, setRepeatedPassword] = useState("");
   const [password, setPassword] = useState("");
-  const { error, onRegister, isLoading } = useContext(AuthenticationContext);
+  const { onLogin, error, isLoading } = useContext(AuthenticationContext);
 
   return (
     <AuthBackground>
@@ -40,25 +39,16 @@ export const RegisterScreen = ({ navigation }) => {
           value={password}
           onChangeText={(val) => setPassword(val)}
         />
-        <TextInput
-          style={styles.input}
-          label="Retype Password"
-          textContentType="password"
-          secureTextEntry
-          autoCapitalize="none"
-          value={repeatedPassword}
-          onChangeText={(val) => setRepeatedPassword(val)}
-        />
         {error && <Text style={styles.error}>{error}</Text>}
         {!isLoading ? (
           <Button
             style={styles.button}
-            icon="email"
+            icon="lock-open-outline"
             color={colors.brand.primary}
             mode="contained"
-            onPress={() => onRegister(email, password, repeatedPassword)}
+            onPress={() => onLogin(email, password)}
           >
-            Create Account
+            Login
           </Button>
         ) : (
           <ActivityIndicator animating={true} color={Colors.blue300} />

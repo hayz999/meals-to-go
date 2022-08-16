@@ -1,16 +1,15 @@
 import React from "react";
-import { ImageBackground, View, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
 import { space } from "../../../utils/spacing";
 import { colors } from "../../../utils/colors";
+import { AuthBackground } from "../../../components/AuthBackground";
+import { Title } from "../../../components/Title";
 
 export const AccountScreen = ({ navigation }) => {
-  const image = {
-    uri: "https://raw.githubusercontent.com/mobinni/MealsToGo/59-image-background-solution/assets/home_bg.jpg",
-  };
   return (
-    <ImageBackground source={image} style={styles.image}>
-      <View style={styles.cover} />
+    <AuthBackground>
+      <Title />
       <View style={styles.container}>
         <Button
           style={styles.button}
@@ -23,7 +22,7 @@ export const AccountScreen = ({ navigation }) => {
         </Button>
         <Button
           style={styles.button}
-          icon="lock-open-outline"
+          icon="email"
           color={colors.brand.primary}
           mode="contained"
           onPress={() => navigation.navigate("Register")}
@@ -31,22 +30,11 @@ export const AccountScreen = ({ navigation }) => {
           Register
         </Button>
       </View>
-    </ImageBackground>
+    </AuthBackground>
   );
 };
 
 const styles = StyleSheet.create({
-  image: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  cover: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    backgroundColor: "rgba(255, 255, 255, 0.3)",
-  },
   container: {
     padding: space.lg,
     backgroundColor: "rgba(255, 255, 255, 0.7)",

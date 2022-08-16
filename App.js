@@ -22,11 +22,11 @@ if (!firebase.apps.length) {
 const isAndroid = Platform.OS === "android";
 
 export default function App() {
-  let [oswaldLoaded] = useOswald({
+  const [oswaldLoaded] = useOswald({
     Oswald_400Regular,
   });
 
-  let [latoLoaded] = useLato({
+  const [latoLoaded] = useLato({
     Lato_400Regular,
   });
 

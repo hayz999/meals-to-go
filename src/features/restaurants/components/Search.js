@@ -24,9 +24,7 @@ export const Search = ({ isFavoritesToggled, onFavoritesToggled }) => {
         onSubmitEditing={() => {
           search(searchKeyword);
         }}
-        onChangeText={(text) => {
-          setSearchKeyword(text);
-        }}
+        onChangeText={setSearchKeyword}
       />
     </View>
   );
