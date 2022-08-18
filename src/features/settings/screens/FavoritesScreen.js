@@ -42,7 +42,7 @@ export const FavoritesScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   list: {
-    padding: space.md,
+    padding: space.lg,
   },
   empty: {
     alignItems: "center",
