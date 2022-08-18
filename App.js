@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { StatusBar as ExpoStatusBar } from "expo-status-bar";
 import { StyleSheet, SafeAreaView, Platform, StatusBar } from "react-native";
 import {
@@ -6,13 +6,11 @@ import {
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";
-import { RestaurantsContextProvider } from "./src/services/restaurants/restaurants.context";
-import { LocationContextProvider } from "./src/services/location/location.context";
-import { FavoritesContextProvider } from "./src/services/favorites/favorites.context";
 import * as firebase from "firebase";
 import { firebaseConfig } from "./config/firebase.config";
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 import { Navigation } from "./src/components/navigation";
+import { colors } from "./src/utils/colors";
 
 // Initialize Firebase
 if (!firebase.apps.length) {
@@ -36,16 +34,10 @@ export default function App() {
 
   return (
     <AuthenticationContextProvider>
-      <FavoritesContextProvider>
-        <LocationContextProvider>
-          <RestaurantsContextProvider>
-            <SafeAreaView style={styles.container}>
-              <Navigation />
-            </SafeAreaView>
-            <ExpoStatusBar style="auto" />
-          </RestaurantsContextProvider>
-        </LocationContextProvider>
-      </FavoritesContextProvider>
+      <SafeAreaView style={styles.container}>
+        <Navigation />
+      </SafeAreaView>
+      <ExpoStatusBar style="auto" />
     </AuthenticationContextProvider>
   );
 }
@@ -54,5 +46,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: isAndroid ? StatusBar.currentHeight : 0,
+    backgroundColor: colors.bg.primary,
   },
 });
